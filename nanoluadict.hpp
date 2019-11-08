@@ -6,12 +6,12 @@ extern "C" {
 
 typedef int (*LuaCFunc)(lua_State*);
 
-typedef union {
+union Value {
     void *genericVal;
     const char *stringVal;
     float numericVal;
     LuaCFunc funcVal;
-} Value;
+};
 
 enum EVENT_TYPE {
    NUMBER,
@@ -19,13 +19,11 @@ enum EVENT_TYPE {
    CFUNCTION,
 };
 
-struct kvPair {
+struct KeyValuePair {
     enum EVENT_TYPE type;
     const char *key;
     Value value;
 };
-
-typedef struct kvPair KeyValuePair;
 
 KeyValuePair kvPairWithNumber(const char *key, float number);
 KeyValuePair kvPairWithString(const char *key, const char *string);
