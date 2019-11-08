@@ -2,9 +2,13 @@
 
 Nano Lua Dictionary (or nano_luadict) is a simple C snippet that facilitates (with some compromises) the creation of Lua tables composed of K/V's (or dictionaries) as specified [here](http://lua-users.org/wiki/TablesTutorial). I made this nano-project to to aid in the creation of an event system for a rather simple Game Engine, and because integrating a huge Lua binding framework such as Luabind just to fulfill this propose seemed to be too much overhead for my personal needs.
 
+### C++ version
+
+This is a fork of [this](https://github.com/Goles/Nano-Lua-Dictionary) library that is meant for C++. If you want a C version, go [there](https://github.com/Goles/Nano-Lua-Dictionary).
+
 ### Usage example
 
-The project itself is self-explanatory, feel free to modify it to your needs, if you feel that a lot could be improved while maintaining simplicity and speed, just send a pull request :) , I'm not picky about them.
+The project itself is self-explanatory, feel free to modify it to your needs, if you feel that a lot could be improved while maintaining simplicity and speed, just send a pull request :).
 
     #include "nanoluadict.h"
 
@@ -18,5 +22,4 @@ The project itself is self-explanatory, feel free to modify it to your needs, if
             , kvPairWithNumber("key5", 5)
             , kvPairWithNumber("key6", 6)
             , kvPairWithNumber("key7", 7)
-            , kvPairWithCFunction("callback", &c_function)); /* This is for a function callback */
-
+            , kvPairWithCFunction("callback", c_function)); /* This is for a function callback */
