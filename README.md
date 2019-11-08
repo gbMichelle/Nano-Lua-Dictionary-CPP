@@ -4,7 +4,7 @@ Nano Lua Dictionary (or nano_luadict) is a simple C snippet that facilitates (wi
 
 ### C++ version
 
-This is a fork of [this](https://github.com/Goles/Nano-Lua-Dictionary) library that is meant for C++. If you want a C version, go [there](https://github.com/Goles/Nano-Lua-Dictionary).
+This is a fork of [this](https://github.com/Goles/Nano-Lua-Dictionary) library that is meant for C++. If you want a C version, go [here](https://github.com/Goles/Nano-Lua-Dictionary).
 
 ### Usage example
 
