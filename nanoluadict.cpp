@@ -5,10 +5,13 @@
 //  Created by Nicolas Goles on 8/25/12.
 //  Copyright (c) 2012 GandoGames. All rights reserved.
 //
+//  Modified to be ISO C++ compliant by gbMichelle
+//  Copyright (c) 2019 gbMichelle. All rights reserved.
+//
 
-#include "nanoluadict.h"
+#include "nanoluadict.hpp"
 
-KeyValuePair kvPairWithNumber(char *key, float number)
+KeyValuePair kvPairWithNumber(const char *key, float number)
 {
     KeyValuePair kv;
     kv.key = key;
@@ -17,7 +20,7 @@ KeyValuePair kvPairWithNumber(char *key, float number)
     return kv;
 }
 
-KeyValuePair kvPairWithString(char *key, char *string)
+KeyValuePair kvPairWithString(const char *key, const char *string)
 {
     KeyValuePair kv;
     kv.key = key;
@@ -26,16 +29,16 @@ KeyValuePair kvPairWithString(char *key, char *string)
     return kv;
 }
 
-KeyValuePair kvPairWithCFunction(char *key, void *function)
+KeyValuePair kvPairWithCFunction(const char *key, LuaCFunc function)
 {
     KeyValuePair kv;
     kv.key = key;
     kv.type = CFUNCTION;
-    kv.value.genericVal = function;
+    kv.value.funcVal = function;
     return kv;
 }
 
-void luaDict(lua_State *L, char *tableName, int kvCount, ...)
+void luaDict(lua_State *L, const char *tableName, int kvCount, ...)
 {
     int i;
     lua_newtable(L);
@@ -54,7 +57,7 @@ void luaDict(lua_State *L, char *tableName, int kvCount, ...)
                 lua_pushstring(L, kv.value.stringVal);
                 break;
             case CFUNCTION:
-                lua_pushcfunction(L, kv.value.genericVal);
+                lua_pushcfunction(L, kv.value.funcVal);
                 break;
             default:
                 break;
